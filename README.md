@@ -48,7 +48,7 @@ A **FastAPI backend** simulating an NBA mini-league where users can manage teams
 - Virtual environment (optional but recommended)  
 
 ### **Setup**
-1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/adam-silver-simulator.git
 cd adam-silver-simulator
