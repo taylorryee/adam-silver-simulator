@@ -29,6 +29,8 @@ class Player(Base):#This is basically a Python class that maps to the Players ta
     team=relationship("Team",back_populates="players")#This line on the other hand is purely for python convenience. 
     #This lets you do things like player.team. # SQLAlchemy uses the ForeignKey above (team_id → teams.id)
 # to automatically fetch the correct Team object when you access player.team.
+    fantasy_account= relationship("FantasyAccount",back_populates="roster")
+    fantasy_account_id = Column(Integer,ForeignKey("fantasy_accounts.id"),nullable=True)
     
 
 class GM(Base):
@@ -37,3 +39,12 @@ class GM(Base):
     name = Column(String,unique=True,index=True)
     team = relationship("Team",back_populates = "gm")
     team_id = Column(Integer, ForeignKey("teams.id"), unique=True)
+
+
+class FantasyAccount(Base):
+    __tablename__ = "fantasy_accounts"
+    id = Column(Integer,primary_key=True,index=True)
+    username = Column(String,unique=True,index=True)
+    password = Column(String,nullable=False)
+    team_name = Column(String,index=True,unique=True)
+    roster = relationship("Player",back_populates ="fantasy_account")

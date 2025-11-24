@@ -11,6 +11,7 @@ class PlayerReturn(BaseModel):#THis is for returning a player, you need orm_mode
     name: str
     age: int
     team_id: Optional[int]
+    fantasyteam_id:Optional[int]
     class Config:
         from_attributes=True
 
